@@ -1,2 +1,2 @@
 # temizlik
-temizliğin ferahlığı ve rahatlığı
+# temizliğin ferahlığı ve kokusu
