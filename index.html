@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ftstemizlik | Profesyonel Temizlik Hizmetleri</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #e6f4ff, #cce5ff);
+      color: #003366;
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .navbar-logo {
+      height: 50px;
+    }
+
+    .navbar-phone {
+      font-size: 0.95rem;
+      color: #0059b3;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .navbar-menu a {
+      text-decoration: none;
+      color: #0059b3;
+      font-weight: 600;
+      padding: 6px 0;
+      transition: color 0.2s;
+    }
+
+    .navbar-menu a:hover {
+      color: #00aaff;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      color: #0059b3;
+      cursor: pointer;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Ana içerik */
+    .hero {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .brand-name {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin: 0.8rem 0;
+      background: linear-gradient(to right, #0059b3, #00aaff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      color: #0066cc;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.9;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 51, 102, 0.12);
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1.2rem;
+      color: #0059b3;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+      margin: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+    .btn-whatsapp:hover {
+      background: #128C7E;
+    }
+
+    .social-links {
+      margin: 1.5rem 0;
+    }
+    .social-links a {
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      background: #0077cc;
+      color: white;
+      border-radius: 50%;
+      line-height: 44px;
+      margin: 0 8px;
+      font-size: 1.2rem;
+      transition: background 0.3s;
+    }
+    .social-links a:hover {
+      background: #005fa3;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .map-container {
+      height: 250px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #004c99;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    /* İLAN KARTLARI */
+    .ilan-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .ilan-card {
+      flex: 1;
+      min-width: 280px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+      transition: transform 0.3s;
+    }
+    .ilan-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .ilan-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ilan-content {
+      padding: 1.2rem;
+    }
+
+    .ilan-content h3 {
+      font-size: 1.25rem;
+      color: #0059b3;
+      margin-bottom: 0.6rem;
+    }
+
+    .ilan-content p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-bottom: 0;
+    }
+
+    /* Mobil Uyum */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 120px;
+      }
+
+      .navbar {
+        padding: 0.8rem 1.2rem;
+      }
+
+      .navbar-menu {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.2rem 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: none;
+      }
+
+      .navbar-menu.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .ilan-card {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <img src="ftsline.png" alt="Ftstemizlik Logo" class="navbar-logo" onerror="this.style.display='none'">
+      <span class="navbar-phone"><i class="fas fa-phone-alt"></i> +90 542 195 24 27</span>
+    </div>
+
+    <ul class="navbar-menu" id="navbarMenu">
+      <li><a href="#anasayfa">Anasayfa</a></li>
+      <li><a href="#hizmetler">Hizmetler</a></li>
+      <li><a href="#kampanyalar">Kampanyalar</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#yorumlar">Yorumlar</a></li>
+      <li><a href="#randevu">Randevu</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- ANASAYFA -->
+  <section id="anasayfa" class="hero">
+    <div class="brand-name">Ftstemizlik</div>
+    <p class="tagline">Hijyenin Adresi — Evden Ofise Profesyonel Temizlik</p>
+    <div style="margin: 2.5rem auto; max-width: 500px;">
+      <img 
+        src="anasayfa-gorsel.png" 
+        alt="Temiz evde mutlu çift" 
+        style="width: 100%; max-width: 500px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0, 51, 102, 0.15);"
+        onerror="this.src='https://via.placeholder.com/500x300/e6f4ff/0059b3?text=Mutlu+Cift+Temiz+Ev'">
+    </div>
+    <p class="hero-text">
+      Temiz bir evde nefes almak kadar huzurlu bir şey yok. Biz temizliği yapıyor, siz keyfini çıkarıyorsunuz!
+    </p>
+  </section>
+
+  <div class="container">
+
+    <!-- HİZMETLER -->
+    <section id="hizmetler" class="card">
+      <h2>Hizmetlerimiz</h2>
+      <p>Ev temizliği, ofis hijyeni, dezenfeksiyon ve özel gün hazırlıkları için uzman ekibimizle hizmetinizdeyiz.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/ftsinsaatvetemizlikadana/" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <a href="https://wa.me/905421952427" class="btn btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp'tan Yazın
+      </a>
+    </section>
+
+    <!-- KAMPANYALAR -->
+    <section id="kampanyalar" class="card">
+      <h2>🔥 Özel Kampanyalar</h2>
+      <p>Sınırlı süreli fırsatları kaçırmayın!</p>
+      <div class="ilan-container">
+        <div class="ilan-card">
+          <img src="kampanya1.jpg" 
+               alt="Haftasonu Temizlik %20 İndirim"
+               onerror="this.src='https://via.placeholder.com/400x180/ffe6e6/ff3333?text=Haftasonu+Indirim'">
+          <div class="ilan-content">
+            <h3>Haftasonu Temizliği</h3>
+            <p>Hafta sonu ev temizliğinde %20 indirim! Sadece bu hafta geçerli.</p>
+            <a href="https://wa.me/905421952427" class="btn btn-whatsapp">Hemen Randevu Al</a>
+          </div>
+        </div>
+        <div class="ilan-card">
+          <img src="kampanya2.jpg" 
+               alt="Yeni Müşteri Paketi"
+               onerror="this.src='https://via.placeholder.com/400x180/e6f9ff/0077cc?text=Yeni+Musteri'">
+          <div class="ilan-content">
+            <h3>Yeni Müşteri Paketi</h3>
+            <p>İlk temizliğinize ücretsiz dezenfeksiyon hediyesi!</p>
+            <a href="https://wa.me/905421952427" class="btn btn-whatsapp">Detaylı Bilgi Al</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GÖRSELLER -->
+    <section id="galeri" class="card">
+      <h2>Öncesi & Sonrası</h2>
+      <p>Temizlik sonrası farkı kendiniz görün!</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="flex:1; min-width:250px;">
+          <p style="font-weight:bold;color:#0059b3;">Ofis Temizliği</p>
+          <div style="display:flex;gap:8px;margin-top:0.5rem;">
+            <img src="oncesi1.jpg" style="width:48%;border-radius:8px;cursor:pointer;" 
+                 onerror="this.src='https://via.placeholder.com/300x200/e6f2ff/0059b3?text=Oncesi'"
+                 onclick="openLightbox(this.src)">
+            <img src="sonrasi1.jpg" style="width:48%;border-radius:8px;cursor:pointer;"
+                 onerror="this.src='https://via.placeholder.com/300x200/ccf0ff/00aaff?text=Sonrasi'"
+                 onclick="openLightbox(this.src)">
+          </div>
+          <p style="font-size:0.9rem;margin-top:0.3rem;opacity:0.8;">Solda önce, sağda sonra</p>
+        </div>
+        <div style="flex:1; min-width:250px;">
+          <p style="font-weight:bold;color:#0059b3;">Ev Temizliği</p>
+          <div style="display:flex;gap:8px;margin-top:0.5rem;">
+            <img src="oncesi2.jpg" style="width:48%;border-radius:8px;cursor:pointer;"
+                 onerror="this.src='https://via.placeholder.com/300x200/f0e6ff/7a00b3?text=Oncesi'"
+                 onclick="openLightbox(this.src)">
+            <img src="sonrasi2.jpg" style="width:48%;border-radius:8px;cursor:pointer;"
+                 onerror="this.src='https://via.placeholder.com/300x200/e6fff0/00b37a?text=Sonrasi'"
+                 onclick="openLightbox(this.src)">
+          </div>
+          <p style="font-size:0.9rem;margin-top:0.3rem;opacity:0.8;">Solda önce, sağda sonra</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- YORUMLAR -->
+    <section id="yorumlar" class="card">
+      <h2>Müşterilerimiz Ne Diyor?</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.5rem;">
+        <div style="flex:1;min-width:280px;background:#f0f8ff;padding:1.2rem;border-radius:12px;border-left:4px solid #0077cc;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;">
+            <img src="musteri1.jpg" 
+                 alt="Müşteri" 
+                 style="width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid #cce6ff;"
+                 onerror="this.src='https://via.placeholder.com/50x50/cccccc/ffffff?text=AK'">
+            <div>
+              <strong>Ayşe K.</strong><br>
+              <span style="color:#00aaff;font-size:0.9rem;">Ev Temizliği</span>
+            </div>
+          </div>
+          <p style="font-style:italic;">“Haftalardır temizliğe vakit bulamıyordum. Ftstemizlik geldi, 2 saatte evimi cennete çevirdi. Kesinlikle öneriyorum!”</p>
+        </div>
+        <div style="flex:1;min-width:280px;background:#f0f8ff;padding:1.2rem;border-radius:12px;border-left:4px solid #0077cc;">
+          <div style="margin-bottom:0.8rem;">
+            <strong>Mehmet B.</strong><br>
+            <span style="color:#00aaff;font-size:0.9rem;">Ofis Dezenfeksiyonu</span>
+          </div>
+          <p style="font-style:italic;">“Ofisimizde haftalık temizlik anlaşması yaptık. Personel her zaman zamanında, titiz ve nazik. Hijyen seviyesi çok yükseldi.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RANDEVU -->
+    <section id="randevu" class="card">
+      <h2>Randevu Alın</h2>
+      <p>Formu doldurun, en kısa sürede dönüş yapalım!</p>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="name">Ad Soyad</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefon</label>
+          <input type="tel" id="phone" name="phone" placeholder="+90 542 195 24 27" required>
+        </div>
+        <div class="form-group">
+          <label for="datetime">Tarih & Saat (İsteğe Bağlı)</label>
+          <input type="datetime-local" id="datetime" name="datetime">
+        </div>
+        <button type="submit" class="btn btn-whatsapp" style="border:none;cursor:pointer;">Gönder</button>
+      </form>
+    </section>
+
+    <!-- İLETİŞİM -->
+    <section id="iletisim" class="card">
+      <h2>İletişim</h2>
+      <p><strong>📞 Telefon:</strong> <a href="tel:+905421952427" style="color:#0077cc;font-weight:600;">+90 542 195 24 27</a></p>
+      <p><strong>💬 WhatsApp:</strong> <a href="https://wa.me/905421952427" target="_blank" style="color:#25D366;font-weight:600;">+90 542 195 24 27</a></p>
+      <p><strong>📸 Instagram:</strong> 
+        <a href="https://www.instagram.com/ftsinsaatvetemizlikadana/" target="_blank" style="color:#E1306C;font-weight:600;">@ftsinsaatvetemizlikadana</a>
+      </p>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.835724238828!2d28.9783!3d41.0082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caba4e8d4e0e0d%3A0x5b7e9b8e8e8e8e8e!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ZİYARETÇİ SAYACI -->
+  <div class="card" style="text-align:center;background:#f0f8ff;border-left:4px solid #0077cc;">
+    <p style="margin:0;font-weight:600;color:#0059b3;">
+      👁️ Bu siteye bugüne kadar 
+      <span id="hit-count">yükleniyor...</span> 
+      kişi baktı.
+    </p>
+  </div>
+  <script async src="https://hits.seeyoufarm.com/api/count?site_id=YOUR_SITE_ID&count_page=true&key=YOUR_KEY"></script>
+
+  <footer>
+    &copy; 2026 Ftstemizlik. Tüm hakları saklıdır.<br>
+    <a href="tel:+905421952427" style="color:#0077cc;text-decoration:underline;">+90 542 195 24 27</a>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('navbarMenu').classList.toggle('active');
+    });
+    document.querySelectorAll('.navbar-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navbarMenu').classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
