@@ -115,13 +115,19 @@
     .hero {
       text-align: center;
       padding: 3rem 1.5rem 2rem;
+      background-image: url('yatak.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
     }
 
     .brand-name {
       font-size: 2.4rem;
       font-weight: 800;
       margin: 0.8rem 0;
-      background: linear-gradient(to right, #0059b3, #00aaff);
+      background: linear-gradient(to right, #ffffff, #cce6ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -129,17 +135,17 @@
 
     .tagline {
       font-size: 1.15rem;
-      color: #0066cc;
+      color: white;
       max-width: 600px;
       margin: 0 auto 1.5rem;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     .hero-text {
       max-width: 600px;
       margin: 0 auto 2rem;
       font-size: 1.1rem;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     .container {
@@ -319,6 +325,10 @@
       .ilan-card {
         min-width: 100%;
       }
+
+      .hero {
+        background-attachment: scroll;
+      }
     }
   </style>
 </head>
@@ -354,7 +364,7 @@
       <img 
         src="anasayfa-gorsel.png" 
         alt="Temiz evde mutlu çift" 
-        style="width: 100%; max-width: 500px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0, 51, 102, 0.15);"
+        style="width: 100%; max-width: 500px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0, 51, 102, 0.3);"
         onerror="this.src='https://via.placeholder.com/500x300/e6f4ff/0059b3?text=Mutlu+Cift+Temiz+Ev'">
     </div>
     <p class="hero-text">
@@ -384,7 +394,7 @@
       <p>Sınırlı süreli fırsatları kaçırmayın!</p>
       <div class="ilan-container">
         <div class="ilan-card">
-          <img src="kampanya1.jpg" 
+          <img src="kampanya1.jpeg" 
                alt="Haftasonu Temizlik %20 İndirim"
                onerror="this.src='https://via.placeholder.com/400x180/ffe6e6/ff3333?text=Haftasonu+Indirim'">
           <div class="ilan-content">
@@ -394,7 +404,7 @@
           </div>
         </div>
         <div class="ilan-card">
-          <img src="kampanya2.jpg" 
+          <img src="kampanya2.jpeg" 
                alt="Yeni Müşteri Paketi"
                onerror="this.src='https://via.placeholder.com/400x180/e6f9ff/0077cc?text=Yeni+Musteri'">
           <div class="ilan-content">
@@ -412,24 +422,24 @@
       <p>Temizlik sonrası farkı kendiniz görün!</p>
       <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem;">
         <div style="flex:1; min-width:250px;">
-          <p style="font-weight:bold;color:#0059b3;">Yatak Temizliği</p>
+          <p style="font-weight:bold;color:#0059b3;">Ofis Temizliği</p>
           <div style="display:flex;gap:8px;margin-top:0.5rem;">
-            <img src="oncesi1.jpg" style="width:48%;border-radius:8px;cursor:pointer;" 
+            <img src="oncesi1.jpeg" style="width:48%;border-radius:8px;cursor:pointer;" 
                  onerror="this.src='https://via.placeholder.com/300x200/e6f2ff/0059b3?text=Oncesi'"
                  onclick="openLightbox(this.src)">
-            <img src="sonrasi1.jpg" style="width:48%;border-radius:8px;cursor:pointer;"
+            <img src="sonrasi1.jpeg" style="width:48%;border-radius:8px;cursor:pointer;"
                  onerror="this.src='https://via.placeholder.com/300x200/ccf0ff/00aaff?text=Sonrasi'"
                  onclick="openLightbox(this.src)">
           </div>
           <p style="font-size:0.9rem;margin-top:0.3rem;opacity:0.8;">Solda önce, sağda sonra</p>
         </div>
         <div style="flex:1; min-width:250px;">
-          <p style="font-weight:bold;color:#0059b3;">Koltuk Temizliği</p>
+          <p style="font-weight:bold;color:#0059b3;">Ev Temizliği</p>
           <div style="display:flex;gap:8px;margin-top:0.5rem;">
-            <img src="oncesi2.jpg" style="width:48%;border-radius:8px;cursor:pointer;"
+            <img src="oncesi2.jpeg" style="width:48%;border-radius:8px;cursor:pointer;"
                  onerror="this.src='https://via.placeholder.com/300x200/f0e6ff/7a00b3?text=Oncesi'"
                  onclick="openLightbox(this.src)">
-            <img src="sonrasi2.jpg" style="width:48%;border-radius:8px;cursor:pointer;"
+            <img src="sonrasi2.jpeg" style="width:48%;border-radius:8px;cursor:pointer;"
                  onerror="this.src='https://via.placeholder.com/300x200/e6fff0/00b37a?text=Sonrasi'"
                  onclick="openLightbox(this.src)">
           </div>
@@ -444,23 +454,23 @@
       <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.5rem;">
         <div style="flex:1;min-width:280px;background:#f0f8ff;padding:1.2rem;border-radius:12px;border-left:4px solid #0077cc;">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;">
-            <img src="musteri1.jpg" 
+            <img src="musteri1.jpeg" 
                  alt="Müşteri" 
                  style="width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid #cce6ff;"
                  onerror="this.src='https://via.placeholder.com/50x50/cccccc/ffffff?text=AK'">
             <div>
               <strong>Ayşe K.</strong><br>
-              <span style="color:#00aaff;font-size:0.9rem;">Yatak Temizliği</span>
+              <span style="color:#00aaff;font-size:0.9rem;">Ev Temizliği</span>
             </div>
           </div>
-          <p style="font-style:italic;">“Haftalardır temizliğe vakit bulamıyordum. Ftstemizlik geldi, Yataklarımızı içinde yaşanacak hale getirdi. Kesinlikle öneriyorum!”</p>       
+          <p style="font-style:italic;">“Haftalardır temizliğe vakit bulamıyordum. Ftstemizlik geldi, 2 saatte evimi cennete çevirdi. Kesinlikle öneriyorum!”</p>
         </div>
         <div style="flex:1;min-width:280px;background:#f0f8ff;padding:1.2rem;border-radius:12px;border-left:4px solid #0077cc;">
           <div style="margin-bottom:0.8rem;">
             <strong>Mehmet B.</strong><br>
-            <span style="color:#00aaff;font-size:0.9rem;">Ofis Koltuk Temizliği</span>
+            <span style="color:#00aaff;font-size:0.9rem;">Ofis Dezenfeksiyonu</span>
           </div>
-          <p style="font-style:italic;">“Ofisimizde koltukları ve sandalyeleri temizlettik. Personel her zaman zamanında, titiz ve nazik. Hijyen seviyesi çok yükseldi. klimaları da temizlettik havamız değişti. Ellerinize sağlık. ”</p>
+          <p style="font-style:italic;">“Ofisimizde haftalık temizlik anlaşması yaptık. Personel her zaman zamanında, titiz ve nazik. Hijyen seviyesi çok yükseldi.”</p>
         </div>
       </div>
     </section>
